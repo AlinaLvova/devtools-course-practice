@@ -23,7 +23,6 @@ class Integral {
     double res;
     double step;
     int div;
-    
     double low, up;
     double function(double x);
 };
