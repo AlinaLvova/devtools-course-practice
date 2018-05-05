@@ -1,8 +1,8 @@
 // Copyright 2018 Lvova Alina
 
 #include <gtest/gtest.h>
-#include "include/numerical_integration.h"
 #include <string>
+#include "include/numerical_integration.h"
 
 double norm(double x) {
     return (x * x * x / 3 + x * x / 2 + 2 * x);
