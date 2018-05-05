@@ -1,7 +1,7 @@
 // Copyright 2018 Lvova Alina
 
 #include "include/numerical_integration.h"
-#include <exception>
+#include <cmath>
 #include <stdexcept>
 #include "iostream"
 
