@@ -1,6 +1,6 @@
 // Copyright 2018 Lvova Alina
 
-#include "include/numerical_integration.h"
+#include "numerical_integration.h"
 #include "iostream"
 
 double Integral::function(double x) {
@@ -129,10 +129,10 @@ void Integral::setUpper(double _up)
     res = 0;
 }
 
-void Integral::setDivisions(int divisions)
+void Integral::setDivisions(int _div)
 {
-    if (divisions > 1)
-        div = divisions;
+    if (_div > 1)
+        div = _div;
     else
         throw std::out_of_range("Divisions must be greater than 1");
     step = (up - low) / div;
