@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "include/numerical_integration.h"
+#include <string>
 
 double norm(double x) {
     return (x * x * x / 3 + x * x / 2 + 2 * x);
@@ -32,7 +33,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, IncorrectLimitInConstructor) {
     // Arrange
     double A = 3.14, B = 65.654;
 
-    // Assert
+    // Act & Assert
     ASSERT_NO_THROW(Integral I(3.04, 9.45, 100));
 }
 
@@ -44,7 +45,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, RiemannSumLeft) {
     Integral I(A, B, N);
     double epsilon = 1.8e2;
 
-    //Act
+    // Act
     result = I.RiemannSumLeft();
     norma = norm(B) - norm(A);
 
@@ -60,7 +61,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, TrapezoidalRule) {
     Integral I(A, B, N);
     double epsilon = 82e-3;
 
-    //Act
+    // Act
     result = I.TrapezoidalRule();
     norma = norm(B) - norm(A);
 
@@ -76,7 +77,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SimpsonRule) {
     Integral I(A, B, N);
     double epsilon = 3.26e-9;
 
-    //Act
+    // Act
     result = I.SimpsonRule();
     norma = norm(B) - norm(A);
 
@@ -92,7 +93,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, Simpson3_8Rule) {
     Integral I(A, B, N);
     double epsilon = 2.65e-9;
 
-    //Act
+    // Act
     result = I.Simpson3_8Rule();
     norma = norm(B) - norm(A);
 
@@ -108,7 +109,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, BooleRule) {
     Integral I(A, B, N);
     double epsilon = 2.67e-9;
 
-    //Act
+    // Act
     result = I.BooleRule();
     norma = norm(B) - norm(A);
 
@@ -124,7 +125,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, NewtonCotes5) {
     Integral I(A, B, N);
     double epsilon = 2.65e-9;
 
-    //Act
+    // Act
     result = I.NewtonCotes5();
     norma = norm(B) - norm(A);
 
@@ -140,7 +141,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetCorrectLowerAndCorrectDivisions) {
     Integral I;
     double epsilon = 3.5e-9;
 
-    //Act
+    // Act
     I.setLower(A);
     I.setDivisions(N);
     result = I.GaussianQuadrature();
@@ -154,7 +155,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetIncorrectLower) {
     // Arrange
     double A = -153.26485, B = 10;
     int N = 750;
-    Integral I(A,B,N);
+    Integral I (A,B,N);
     double newLower = 10.10;
     
     // Act & Assert
@@ -174,7 +175,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetCorrectUpperAndCorrectDivisions) {
     Integral I;
     double epsilon = 3.5e-9;
 
-    //Act
+    // Act
     I.setUpper(B);
     I.setDivisions(N);
     result = I.GaussianQuadrature();
@@ -193,7 +194,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetIncorrectUpper) {
 
     // Act & Assert
     try {
-        I.setLower(newUpper);
+        I.setUpper(newUpper);
     }
     catch (std::out_of_range const & err) {
         EXPECT_EQ(err.what(), std::string("upper limit out of range"));
@@ -207,7 +208,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetIncorrectDivisions) {
 
     // Act & Assert
     try {
-        I.setLower(newDiv);
+        I.setDivisions(newDiv);
     }
     catch (std::out_of_range const & err) {
         EXPECT_EQ(err.what(), std::string("Divisions must be greater than 1"));
