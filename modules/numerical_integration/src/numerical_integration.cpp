@@ -1,6 +1,6 @@
 // Copyright 2018 Lvova Alina
 
-#include "numerical_integration.h"
+#include "include/numerical_integration.h"
 #include "iostream"
 
 double Integral::function(double x) {
