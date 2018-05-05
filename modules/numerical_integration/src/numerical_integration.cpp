@@ -22,11 +22,11 @@ Integral::Integral(double lower_limit, double upper_limit, int divisions) {
         up = upper_limit;
     }
     else {
-        throw std::out_of_range("limits out of range");  // "Incorrect limits"
+        throw std::out_of_range("limits out of range");
     }
     setDivisions(divisions);
     res = 0;
-    step = (upper_limit - lower_limit) / divisions;  //шаг разбиения отрезка
+    step = (upper_limit - lower_limit) / divisions;
 }
 
 double Integral::RiemannSumLeft() {
