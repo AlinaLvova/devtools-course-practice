@@ -1,6 +1,7 @@
 // Copyright 2018 Lvova Alina
 
 #include "include/numerical_integration.h"
+#include <math.h>
 #include <stdexcept>
 
 double Integral::function(double x) {
