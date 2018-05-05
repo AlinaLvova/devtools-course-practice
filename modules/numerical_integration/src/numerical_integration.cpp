@@ -8,8 +8,7 @@ double Integral::function(double x) {
     return (x * x + x + 2);
 }
 
-Integral::Integral()
-{
+Integral::Integral() {
     low = 0;
     up = 0;
     div = 0;
@@ -17,18 +16,17 @@ Integral::Integral()
     step = 0;
 }
 
-Integral::Integral(double lower_limit, double upper_limit, int divisions)
-{
-    if (lower_limit < upper_limit)
-    {
+Integral::Integral(double lower_limit, double upper_limit, int divisions) {
+    if (lower_limit < upper_limit) {
         low = lower_limit;
         up = upper_limit;
     }
-    else
-        throw std::out_of_range("limits out of range");// "Incorrect limits";
+    else {
+        throw std::out_of_range("limits out of range");  // "Incorrect limits"
+    }
     setDivisions(divisions);
     res = 0;
-    step = (upper_limit - lower_limit) / divisions; //шаг разбиения отрезка
+    step = (upper_limit - lower_limit) / divisions;  //шаг разбиения отрезка
 }
 
 double Integral::RiemannSumLeft() {
@@ -59,7 +57,8 @@ double Integral::SimpsonRule() {
     for (int i = 0; i < div; i++) {
         A += step;
         B = A + step;
-        res += (B - A) / 6 * (function(A) + 4 * function((A + B) / 2) + function(B));
+        res += (B - A) / 6 *
+            (function(A) + 4 * function((A + B) / 2) + function(B));
     }
     return res;
 }
@@ -70,7 +69,9 @@ double Integral::Simpson3_8Rule() {
     for (int i = 0; i < div; i++) {
         A += step;
         B = A + step;
-        res += (B - A) / 8 * (function(A) + 3 * function((2 * A + B) / 3) + 3 * function((A + 2 * B) / 3) + function(B));
+        res += (B - A) / 8 * 
+            (function(A) + 3 * function((2 * A + B) / 3)
+             + 3 * function((A + 2 * B) / 3) + function(B));
     }
     return res;
 }
@@ -81,8 +82,8 @@ double Integral::BooleRule() {
     for (int i = 0; i < div; i++) {
         A += step;
         B = A + step;
-        res += (B - A) / 90 * (7 * function(A) + 32 * function((3 * A + B) / 4) + 12 * function((A + B) / 2)
-            + 32 * function((A + 3 * B) / 4) + 7 * function(B));
+        res += (B - A) / 90 * (7 * function(A) + 32 * function((3 * A + B) / 4)
+             + 12 * function((A + B) / 2) + 32 * function((A + 3 * B) / 4) + 7 * function(B));
     }
     return res;
 }
@@ -112,16 +113,14 @@ double Integral::GaussianQuadrature() {
     return res;
 }
 
-void Integral::setLower(double _low)
-{
+void Integral::setLower(double _low) {
     if (_low < up)
         low = _low;
     else
         throw std::out_of_range("lower limit out of range");// "Incorrect limits";
 }
 
-void Integral::setUpper(double _up)
-{
+void Integral::setUpper(double _up) {
     if (_up > low)
         up = _up;
     else
@@ -130,8 +129,7 @@ void Integral::setUpper(double _up)
     res = 0;
 }
 
-void Integral::setDivisions(int _div)
-{
+void Integral::setDivisions(int _div) {
     if (_div > 1)
         div = _div;
     else
