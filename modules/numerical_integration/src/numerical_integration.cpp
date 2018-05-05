@@ -2,8 +2,8 @@
 
 #include "include/numerical_integration.h"
 #include <cmath>
+#include <iostream>
 #include <stdexcept>
-#include "iostream"
 
 double Integral::function(double x) {
     return (x * x + x + 2);
@@ -19,8 +19,8 @@ Integral::Integral() {
 
 Integral::Integral(double lower_limit, double upper_limit, int divisions) {
     if (lower_limit < upper_limit) {
-        low = lower_limit;
         up = upper_limit;
+        low = lower_limit;
     }
     else
         throw std::out_of_range("limits out of range");
