@@ -103,12 +103,12 @@ double Integral::NewtonCotes5() {
 
 double Integral::GaussianQuadrature() {
     res = 0;
-    double A = low - step, f1, f2;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
         double B = A + step;
-        f1 = (A + B) / 2;
-        f2 = (B - A) / (2 * sqrt(3));
+        double f1 = (A + B) / 2;
+        double f2 = (B - A) / (2 * sqrt(3));
         res += (B - A) / 2 * (function(f1 - f2) + function(f1 + f2));
     }
     return res;
