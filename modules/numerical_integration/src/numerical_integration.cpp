@@ -2,6 +2,7 @@
 
 #include "include/numerical_integration.h"
 #include "iostream"
+#include <stdexcept>
 
 double Integral::function(double x) {
     return (x * x + x + 2);
