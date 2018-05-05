@@ -7,6 +7,7 @@
 class Integral {
 public:
     Integral();
+
     Integral(double lower_limit, double upper_limit, int divisions);
     double RiemannSumLeft();
     double TrapezoidalRule();
@@ -15,16 +16,16 @@ public:
     double BooleRule();
     double NewtonCotes5();
     double GaussianQuadrature();
-    void setLower(double);
-    void setUpper(double);
-    void setDivisions(int);
+    void setLower(double _low);
+    void setUpper(double _up);
+    void setDivisions(int _div);
 
 private:
     double res;
+
     double step;
     int div;
     double low, up;
-
     double function(double x);
 };
 #endif  // MODULES_NUMERICAL_INTEGRATION_INCLUDE_NUMERICAL_INTEGRATION_H_
