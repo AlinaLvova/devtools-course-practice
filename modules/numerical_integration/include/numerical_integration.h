@@ -5,9 +5,8 @@
 #define MODULES_NUMERICAL_INTEGRATION_INCLUDE_NUMERICAL_INTEGRATION_H_
 
 class Integral {
-public:
+ public:
     Integral();
-
     Integral(double lower_limit, double upper_limit, int divisions);
     double RiemannSumLeft();
     double TrapezoidalRule();
@@ -20,11 +19,11 @@ public:
     void setUpper(double _up);
     void setDivisions(int _div);
 
-private:
+ private:
     double res;
-
     double step;
     int div;
+    
     double low, up;
     double function(double x);
 };
