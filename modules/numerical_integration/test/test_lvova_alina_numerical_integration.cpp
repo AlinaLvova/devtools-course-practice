@@ -19,7 +19,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, CorrectDivisionsInConstructor) {
 TEST(Lvova_Alina_NumericalIntegrationTest, IncorrectLimitsInConstructor) {
     // Arrange
     double A = 3.14, B = -65.654;
-    
+
     // Act & Assert
     try {
         Integral I(A, B, 10);
@@ -155,9 +155,9 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetIncorrectLower) {
     // Arrange
     double A = -153.26485, B = 10;
     int N = 750;
-    Integral I (A,B,N);
+    Integral I(A, B, N);
     double newLower = 10.10;
-    
+ 
     // Act & Assert
     try {
         I.setLower(newLower);
