@@ -30,44 +30,42 @@ Integral::Integral(double lower_limit, double upper_limit, int divisions) {
 
 double Integral::RiemannSumLeft() {
     res = 0;
-    double A = low - step, B;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
-        res += (B - A) * function(A);
+        res += step * function(A);
     }
     return res;
 }
 
 double Integral::TrapezoidalRule() {
     res = 0;
-    double A = low - step, B;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
-        res += (B - A) / 2 * (function(A) + function(B));
+        res += step / 2 * (function(A) + function(A + step));
     }
     return res;
 }
 
 double Integral::SimpsonRule() {
     res = 0;
-    double A = low - step, B;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
-        res += (B - A) / 6 *
-            (function(A) + 4 * function((A + B) / 2) + function(B));
+        res += step / 6 *
+            (function(A) + 4 * function((2 * A + step) / 2)
+             + function(A + step));
     }
     return res;
 }
 
 double Integral::Simpson3_8Rule() {
     res = 0;
-    double A = low - step, B;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
+        double B = A + step;
         res += (B - A) / 8 *
             (function(A) + 3 * function((2 * A + B) / 3)
              + 3 * function((A + 2 * B) / 3) + function(B));
@@ -77,10 +75,10 @@ double Integral::Simpson3_8Rule() {
 
 double Integral::BooleRule() {
     res = 0;
-    double A = low - step, B;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
+        double B = A + step;
         res += (B - A) / 90 * (7 * function(A) + 32 * function((3 * A + B) / 4)
              + 12 * function((A + B) / 2) +
              32 * function((A + 3 * B) / 4) + 7 * function(B));
@@ -90,10 +88,10 @@ double Integral::BooleRule() {
 
 double Integral::NewtonCotes5() {
     res = 0;
-    double A = low - step, B;
+    double A = low - step;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
+        double B = A + step;
         res += (B - A) / 288 * (19 * function(A)
                + 75 * function((4 * A + B) / 5)
                + 50 * function((3 * A + 2 * B) / 5)
@@ -105,10 +103,10 @@ double Integral::NewtonCotes5() {
 
 double Integral::GaussianQuadrature() {
     res = 0;
-    double A = low - step, B, f1, f2;
+    double A = low - step, f1, f2;
     for (int i = 0; i < div; i++) {
         A += step;
-        B = A + step;
+        double B = A + step;
         f1 = (A + B) / 2;
         f2 = (B - A) / (2 * sqrt(3));
         res += (B - A) / 2 * (function(f1 - f2) + function(f1 + f2));
