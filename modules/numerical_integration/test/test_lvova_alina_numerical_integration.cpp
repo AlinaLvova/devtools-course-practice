@@ -157,7 +157,7 @@ TEST(Lvova_Alina_NumericalIntegrationTest, SetIncorrectLower) {
     int N = 750;
     Integral I(A, B, N);
     double newLower = 10.10;
- 
+
     // Act & Assert
     try {
         I.setLower(newLower);
