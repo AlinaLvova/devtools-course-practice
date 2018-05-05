@@ -20,8 +20,9 @@ Integral::Integral(double lower_limit, double upper_limit, int divisions) {
     if (lower_limit < upper_limit) {
         up = upper_limit;
         low = lower_limit;
-    } else
+    } else {
         throw std::out_of_range("limits out of range");
+    }
     setDivisions(divisions);
     res = 0;
     step = (upper_limit - lower_limit) / divisions;
@@ -93,9 +94,9 @@ double Integral::NewtonCotes5() {
     for (int i = 0; i < div; i++) {
         A += step;
         B = A + step;
-        res += (B - A) / 288 * (19 * function(A) 
+        res += (B - A) / 288 * (19 * function(A)
                + 75 * function((4 * A + B) / 5)
-               + 50 * function((3 * A + 2 * B) / 5) 
+               + 50 * function((3 * A + 2 * B) / 5)
                + 50 * function((2 * A + 3 * B) / 5)
                + 75 * function((A + 4 * B) / 5) + 19 * function(B));
     }
